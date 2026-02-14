@@ -6,6 +6,10 @@
     <meta name="description" content="Pack R3D — Acesso vitalício ao VIP. Conteúdo exclusivo sem filtros. Pagamento 100% sigiloso via Cakto.">
     <title>Pack R3D | Acesso VIP Vitalício — Conteúdo Exclusivo</title>
     
+    <!-- Favicon (ícone da aba) -->
+    <link rel="icon" href="./assets/favicon.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="./assets/favicon.png">
+    
     <!-- Canonical e Open Graph (packpicante.online) -->
     <link rel="canonical" href="https://packpicante.online">
     <meta property="og:type" content="website">
@@ -15,6 +19,24 @@
     <meta property="og:image" content="https://packpicante.online/assets/48782809-091a-4b8f-9e4d-7cf1be716468.webp">
     <meta property="og:site_name" content="Pack R3D">
     <meta property="og:locale" content="pt_BR">
+    
+    <!-- Meta Pixel (substitua 1482566156809248 pelo ID do seu pixel no Gerenciador de Eventos do Meta) -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1482566156809248');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1482566156809248&ev=PageView&noscript=1"
+    alt="" /></noscript>
+    <!-- End Meta Pixel Code -->
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -125,7 +147,7 @@
         <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
             <!-- Logo -->
             <a href="#" class="block hover:opacity-80 transition-opacity">
-                <img src="https://placehold.co/150x40/000000/FFFFFF?text=PACK+R3D&font=oswald" alt="Pack R3D Logo" class="h-8 w-auto invert">
+                <img src="./assets/logo-pack-r3d.png" alt="Pack R3D Logo" class="h-8 w-auto">
             </a>
 
             <!-- Mobile Menu Toggle (Required by system, but minimal per user request) -->
@@ -351,7 +373,7 @@
                             </li>
                         </ul>
 
-                        <a href="https://pay.cakto.com.br/34jmqzy" class="block w-full bg-red-600 hover:bg-red-700 text-white font-bold text-xl uppercase py-4 rounded-lg shadow-lg hover:scale-[1.02] transition-transform animate-pulse-fast tracking-widest">
+                        <a href="https://pay.cakto.com.br/34jmqzy" onclick="typeof fbq !== 'undefined' && fbq('track', 'InitiateCheckout');" class="block w-full bg-red-600 hover:bg-red-700 text-white font-bold text-xl uppercase py-4 rounded-lg shadow-lg hover:scale-[1.02] transition-transform animate-pulse-fast tracking-widest">
                             Garantir Meu Acesso — R$ 27,90 🔞
                         </a>
                         
