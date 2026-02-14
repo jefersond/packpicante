@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pack R3D — Acesso vitalício ao VIP. Conteúdo exclusivo sem filtros. Pagamento 100% sigiloso via Cakto.">
+    <title>Pack R3D | Acesso VIP Vitalício — Conteúdo Exclusivo</title>
+    
+    <!-- Canonical e Open Graph (packpicante.online) -->
+    <link rel="canonical" href="https://packpicante.online">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://packpicante.online">
+    <meta property="og:title" content="Pack R3D | Acesso VIP Vitalício — Conteúdo Exclusivo">
+    <meta property="og:description" content="Pack R3D — Acesso vitalício ao VIP. Conteúdo exclusivo sem filtros. Pagamento 100% sigiloso via Cakto.">
+    <meta property="og:image" content="https://packpicante.online/assets/48782809-091a-4b8f-9e4d-7cf1be716468.webp">
+    <meta property="og:site_name" content="Pack R3D">
+    <meta property="og:locale" content="pt_BR">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS v4 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style type="text/tailwindcss">
+        @theme {
+            --font-display: 'Anton', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-accent: 'Permanent Marker', cursive;
+            --color-brand-black: #050505;
+            --color-brand-dark: #0a0a0a;
+            --color-brand-red: #dc2626;
+            --color-brand-red-dark: #991b1b;
+        }
+
+        /* Custom Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .noise-overlay {
+            background-image: url('./assets/59618a08-1788-4493-ae1e-7eef437fc821.webp');
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .censored-blur {
+            filter: blur(12px);
+            transform: scale(1.1); /* Prevent blurred edges from showing white */
+        }
+
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.6);
+        }
+
+        .font-accent {
+            font-family: var(--font-accent), cursive;
+        }
+
+        .red-overlay {
+            position: relative;
+        }
+        .red-overlay::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(180deg, transparent 0%, rgba(220, 38, 38, 0.25) 50%, rgba(153, 27, 27, 0.5) 100%);
+            pointer-events: none;
+        }
+
+        .lock-neon {
+            color: rgb(239 68 68);
+            filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.8));
+        }
+
+        .animate-pulse-fast {
+            animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: none; }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        /* FAQ accordion chevron */
+        details[open] summary .faq-chevron {
+            transform: rotate(180deg);
+        }
+
+        /* Proof social popup */
+        @keyframes proofIn {
+            from { opacity: 0; transform: translateX(24px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes proofOut {
+            from { opacity: 1; transform: translateX(0); }
+            to { opacity: 0; transform: translateX(24px); }
+        }
+        .proof-in {
+            animation: proofIn 0.3s ease-out forwards;
+        }
+        .proof-out {
+            animation: proofOut 0.3s ease-in forwards;
+        }
+    </style>
+</head>
+<body class="bg-brand-black text-zinc-300 font-body antialiased selection:bg-red-600 selection:text-white overflow-x-hidden">
+
+    <!-- Noise Texture Overlay -->
+    <div class="fixed inset-0 w-full h-full noise-overlay z-50"></div>
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-40 bg-brand-black/90 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="block hover:opacity-80 transition-opacity">
+                <img src="https://placehold.co/150x40/000000/FFFFFF?text=PACK+R3D&font=oswald" alt="Pack R3D Logo" class="h-8 w-auto invert">
+            </a>
+
+            <!-- Mobile Menu Toggle (Required by system, but minimal per user request) -->
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+
+            <!-- Desktop Nav (Hidden per user request for focus, but structurally present) -->
+            <nav class="hidden md:flex gap-6 text-sm font-semibold tracking-wide uppercase text-zinc-400">
+                <a href="#hero" class="hover:text-red-500 transition-colors">Início</a>
+                <a href="#previews" class="hover:text-red-500 transition-colors">Prévias</a>
+                <a href="#faq" class="hover:text-red-500 transition-colors">FAQ</a>
+                <a href="#offer" class="hover:text-red-500 transition-colors">Acesso</a>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-zinc-900 border-b border-white/10 absolute w-full left-0 top-full">
+            <div class="flex flex-col p-4 space-y-4 text-center">
+                <a href="#hero" class="text-white font-bold uppercase tracking-wider py-2">Início</a>
+                <a href="#previews" class="text-white font-bold uppercase tracking-wider py-2">Prévias</a>
+                <a href="#faq" class="text-white font-bold uppercase tracking-wider py-2">FAQ</a>
+                <a href="#offer" class="text-red-500 font-bold uppercase tracking-wider py-2">Entrar no VIP</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 pb-12 px-4 overflow-hidden">
+            <!-- Background Glow -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-red-600/20 rounded-full blur-[120px] pointer-events-none"></div>
+
+            <div class="max-w-lg w-full relative z-10 text-center animate-fade-in-up">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center gap-2 bg-red-900/30 border border-red-500/30 rounded-full px-3 py-1 mb-6">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                    </span>
+                    <span class="text-xs font-bold text-red-400 uppercase tracking-widest">Vagas Limitadas</span>
+                </div>
+
+                <!-- Headline -->
+                <h1 class="font-display text-4xl sm:text-6xl text-white leading-[1.1] uppercase mb-4 drop-shadow-xl">
+                    O que você esconde das redes, <span class="text-red-600">eu mostro aqui</span>.
+                </h1>
+                
+                <p class="text-lg text-zinc-400 mb-8 max-w-sm mx-auto leading-relaxed">
+                    Sem filtros. Sem censura. O lado secreto que não aparece no feed. Acesso vitalício ao VIP — pagamento 100% sigiloso pela Cakto.
+                </p>
+
+                <!-- Censored Image Card -->
+                <div class="relative w-full aspect-[4/5] max-w-sm mx-auto mb-8 rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
+                    <img src="./assets/48782809-091a-4b8f-9e4d-7cf1be716468.webp" alt="Conteúdo Exclusivo Censurado" class="w-full h-full object-cover blur-[8px] transition-all duration-700 group-hover:blur-[10px] group-hover:scale-105">
+                    
+                    <!-- Overlay Elements -->
+                    <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center">
+                        <div class="bg-red-600 text-white font-display text-2xl uppercase px-6 py-2 transform -rotate-12 border-4 border-white shadow-xl tracking-widest">
+                            CENSORED
+                        </div>
+                        <div class="mt-4 flex items-center gap-2 text-white/90 text-sm font-bold uppercase tracking-widest drop-shadow-md">
+                            <i data-lucide="lock" class="w-4 h-4"></i>
+                            Ver tudo sem bloqueios
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Primary CTA -->
+                <a href="#offer" class="block w-full bg-gradient-to-r from-red-600 to-red-800 text-white font-bold text-lg uppercase py-4 rounded-lg shadow-[0_0_30px_rgba(220,38,38,0.4)] hover:shadow-[0_0_50px_rgba(220,38,38,0.6)] hover:scale-[1.02] transition-all duration-300 animate-pulse-fast tracking-wide">
+                    Quero Entrar no VIP Agora 🔓
+                </a>
+
+                <!-- Social Proof -->
+                <div class="mt-6 flex flex-col items-center gap-3">
+                    <img src="./assets/abddd344-4fd4-4833-9144-0e5926329af5.webp" alt="Membros VIP" class="h-8 object-contain opacity-90">
+                    <p class="text-xs text-zinc-500 flex items-center justify-center gap-1">
+                        <i data-lucide="check-circle" class="w-3 h-3 text-green-500"></i>
+                        <span class="font-medium text-zinc-400">Junte-se a +2.400 membros satisfeitos</span>
+                    </p>
+                    <p class="text-[10px] text-zinc-600 font-mono">
+                        🔥 Restam apenas 23 vagas para novos VIP neste mês.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sneak Peek Section -->
+        <section id="previews" class="py-16 px-4 bg-brand-dark relative border-t border-white/5">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-10">
+                    <h2 class="font-accent text-3xl text-red-600 uppercase mb-2">Aqueça sua noite: conteúdo premium liberado</h2>
+                    <p class="text-zinc-500 text-sm uppercase tracking-widest">Amostras do que você vai encontrar</p>
+                </div>
+
+                <!-- Bento Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+                    <!-- Card 1 -->
+                    <div class="group relative aspect-square rounded-xl overflow-hidden border border-white/10 bg-zinc-900 red-overlay">
+                        <img src="./assets/ref-pose-1.png" alt="Preview 1" class="w-full h-full object-cover blur-[5px] opacity-80 transition-all duration-500 group-hover:opacity-60">
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/20 z-10">
+                            <i data-lucide="lock" class="w-8 h-8 lock-neon"></i>
+                        </div>
+                        <span class="absolute top-2 right-2 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-lg uppercase z-10">VER EM 4K</span>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="group relative aspect-square rounded-xl overflow-hidden border border-white/10 bg-zinc-900 red-overlay">
+                        <img src="./assets/ref-pose-2.png" alt="Preview 2" class="w-full h-full object-cover blur-[5px] opacity-80 transition-all duration-500 group-hover:opacity-60">
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/20 z-10">
+                            <i data-lucide="lock" class="w-8 h-8 lock-neon"></i>
+                        </div>
+                        <span class="absolute top-2 right-2 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-lg uppercase z-10">ACESSO VIP AGORA</span>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="group relative aspect-square rounded-xl overflow-hidden border border-white/10 bg-zinc-900 red-overlay md:col-span-1 col-span-2">
+                        <img src="./assets/ref-pose-3.png" alt="Preview 3" class="w-full h-full object-cover blur-[5px] opacity-80 transition-all duration-500 group-hover:opacity-60">
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/20 z-10">
+                            <i data-lucide="lock" class="w-8 h-8 lock-neon"></i>
+                        </div>
+                        <span class="absolute top-2 right-2 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-lg uppercase z-10">DESBLOQUEAR TUDO</span>
+                    </div>
+                </div>
+
+                <!-- Footer Bar -->
+                <div class="mt-6 rounded-xl overflow-hidden bg-gradient-to-r from-black via-red-900/40 to-black py-4 px-6 text-center border border-red-900/30">
+                    <p class="font-accent text-red-400 text-sm uppercase tracking-wider">Acesso Imediato e Discreto. Vagas Limitadas!</p>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <p class="text-zinc-400 text-sm mb-4">E muito mais esperando por você...</p>
+                    <a href="#offer" class="inline-flex items-center text-red-500 font-bold hover:text-red-400 transition-colors uppercase text-sm tracking-wider group">
+                        Ver Tudo Sem Bloqueios <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Objections / Features Section - 4 Benefícios -->
+        <section id="features" class="py-12 bg-black border-y border-white/5">
+            <div class="max-w-5xl mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="flex flex-col items-center text-center p-4">
+                        <div class="w-16 h-16 mb-4 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800">
+                            <img src="./assets/ad0e3319-c2dc-4ad3-b595-7ceb4963deeb.webp" alt="Icon Lock" class="w-8 h-8 object-contain opacity-80">
+                        </div>
+                        <h3 class="text-white font-bold uppercase mb-2">100% Sigiloso</h3>
+                        <p class="text-sm text-zinc-500">Pagamento via Cakto com descrição discreta na fatura. Ninguém identifica o que você comprou.</p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="flex flex-col items-center text-center p-4">
+                        <div class="w-16 h-16 mb-4 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800">
+                            <img src="./assets/a1e17e7a-147d-4186-b9d4-7b53f7bfed8d.webp" alt="Icon Flash" class="w-8 h-8 object-contain opacity-80">
+                        </div>
+                        <h3 class="text-white font-bold uppercase mb-2">Acesso Imediato</h3>
+                        <p class="text-sm text-zinc-500">Link enviado no seu e-mail em menos de 1 minuto após o pagamento. Sem espera.</p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="flex flex-col items-center text-center p-4">
+                        <div class="w-16 h-16 mb-4 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800">
+                            <img src="./assets/db7949ee-cefb-4f8d-9b0d-4fc100eb5be6.webp" alt="Icon Mobile" class="w-8 h-8 object-contain opacity-80">
+                        </div>
+                        <h3 class="text-white font-bold uppercase mb-2">Qualquer Dispositivo</h3>
+                        <p class="text-sm text-zinc-500">Celular, tablet ou computador. Assista quando quiser, baixe o que quiser.</p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="flex flex-col items-center text-center p-4">
+                        <div class="w-16 h-16 mb-4 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800">
+                            <i data-lucide="message-circle" class="w-8 h-8 text-red-500"></i>
+                        </div>
+                        <h3 class="text-white font-bold uppercase mb-2">Suporte via Telegram</h3>
+                        <p class="text-sm text-zinc-500">Dúvidas? Resposta rápida e confidencial direto no Telegram após a compra.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Offer Section -->
+        <section id="offer" class="py-20 px-4 relative overflow-hidden">
+             <!-- Background elements -->
+             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-red-900/10 pointer-events-none"></div>
+
+            <div class="max-w-md mx-auto w-full relative z-10">
+                <div class="bg-zinc-900/80 backdrop-blur-xl border border-red-600 rounded-2xl p-1 shadow-[0_0_40px_rgba(220,38,38,0.15)]">
+                    <!-- Timer Banner - Urgência -->
+                    <div class="bg-red-600/10 rounded-t-xl py-3 text-center border-b border-red-600/20">
+                        <p class="text-red-500 font-mono text-sm font-bold flex items-center justify-center gap-2 flex-wrap">
+                            <i data-lucide="clock" class="w-4 h-4 shrink-0"></i>
+                            OFERTA EXPIRA EM <span id="countdown" class="text-white">47:59</span>
+                        </p>
+                    </div>
+
+                    <div class="p-8 text-center">
+                        <h3 class="font-display text-3xl text-white uppercase mb-2">Acesso Vitalício</h3>
+                        <p class="text-zinc-400 text-sm mb-6">Pack Completo + Atualizações</p>
+
+                        <div class="flex items-center justify-center gap-4 mb-8">
+                            <span class="text-zinc-500 text-lg line-through decoration-red-500 decoration-2">R$ 97,00</span>
+                            <span class="text-4xl font-bold text-white tracking-tight">R$ 27,90</span>
+                        </div>
+
+                        <ul class="text-left space-y-3 mb-8 pl-4">
+                            <li class="flex items-center text-zinc-300 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 text-red-500 mr-3 shrink-0"></i>
+                                <span>+500 Fotos em Alta Resolução</span>
+                            </li>
+                            <li class="flex items-center text-zinc-300 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 text-red-500 mr-3 shrink-0"></i>
+                                <span>25 Vídeos Exclusivos (Full HD)</span>
+                            </li>
+                            <li class="flex items-center text-zinc-300 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 text-red-500 mr-3 shrink-0"></i>
+                                <span>Sem Censura / Sem Cortes</span>
+                            </li>
+                            <li class="flex items-center text-zinc-300 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 text-red-500 mr-3 shrink-0"></i>
+                                <span>Download Liberado</span>
+                            </li>
+                        </ul>
+
+                        <a href="https://pay.cakto.com.br/34jmqzy" class="block w-full bg-red-600 hover:bg-red-700 text-white font-bold text-xl uppercase py-4 rounded-lg shadow-lg hover:scale-[1.02] transition-transform animate-pulse-fast tracking-widest">
+                            Garantir Meu Acesso — R$ 27,90 🔞
+                        </a>
+                        
+                        <p class="mt-4 text-xs text-zinc-600">
+                            Pagamento único via Cakto. 100% sigiloso. Acesso vitalício.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Security Badges - Cakto (estilo da página) -->
+                <div class="mt-8 rounded-xl bg-zinc-900/80 border border-white/10 p-5 text-center">
+                     <p class="text-sm font-semibold text-zinc-400 uppercase tracking-widest mb-2">Pagamento Seguro via Cakto</p>
+                     <p class="text-sm text-zinc-500 max-w-sm mx-auto text-center leading-relaxed mb-5">Criptografia e fatura discreta. Sua privacidade protegida.</p>
+                     <div class="flex flex-wrap items-center justify-center gap-6">
+                         <div class="flex flex-col items-center gap-1.5">
+                             <span class="w-12 h-12 rounded-full bg-zinc-800 border border-white/10 flex items-center justify-center">
+                                 <i data-lucide="shield-check" class="w-6 h-6 text-red-500" style="filter: drop-shadow(0 0 6px rgba(220,38,38,0.5));"></i>
+                             </span>
+                             <span class="text-[10px] text-zinc-500 uppercase tracking-wider">Protegido</span>
+                         </div>
+                         <div class="flex flex-col items-center gap-1.5">
+                             <span class="w-12 h-12 rounded-full bg-zinc-800 border border-white/10 flex items-center justify-center">
+                                 <i data-lucide="lock" class="w-6 h-6 text-red-500" style="filter: drop-shadow(0 0 6px rgba(220,38,38,0.5));"></i>
+                             </span>
+                             <span class="text-[10px] text-zinc-500 uppercase tracking-wider">Criptografia</span>
+                         </div>
+                         <div class="flex flex-col items-center gap-1.5">
+                             <span class="w-12 h-12 rounded-full bg-zinc-800 border border-white/10 flex items-center justify-center">
+                                 <i data-lucide="circle-check" class="w-6 h-6 text-red-500" style="filter: drop-shadow(0 0 6px rgba(220,38,38,0.5));"></i>
+                             </span>
+                             <span class="text-[10px] text-zinc-500 uppercase tracking-wider">100% Sigiloso</span>
+                         </div>
+                         <div class="flex flex-col items-center gap-1.5">
+                             <span class="w-12 h-12 rounded-full bg-zinc-800 border border-white/10 flex items-center justify-center">
+                                 <i data-lucide="shield" class="w-6 h-6 text-red-500" style="filter: drop-shadow(0 0 6px rgba(220,38,38,0.5));"></i>
+                             </span>
+                             <span class="text-[10px] text-zinc-500 uppercase tracking-wider">Garantia</span>
+                         </div>
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ - Quebra de Objeções -->
+        <section id="faq" class="py-16 px-4 bg-brand-dark border-t border-white/5">
+            <div class="max-w-2xl mx-auto">
+                <h2 class="font-display text-2xl text-white uppercase mb-8 text-center">Perguntas <span class="text-red-600">Frequentes</span></h2>
+                
+                <div class="space-y-4">
+                    <details class="group bg-zinc-900/80 border border-white/10 rounded-xl overflow-hidden">
+                        <summary class="flex items-center justify-between cursor-pointer p-4 text-white font-semibold text-sm uppercase hover:bg-zinc-800/50 transition-colors list-none">
+                            O pagamento aparece na fatura do cartão?
+                            <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 shrink-0 transition-transform duration-200"></i>
+                        </summary>
+                        <div class="px-4 pb-4 text-zinc-400 text-sm leading-relaxed">
+                            Não. O pagamento é processado pela Cakto com descrição genérica e discreta. Ninguém identificará o tipo de compra pela fatura.
+                        </div>
+                    </details>
+
+                    <details class="group bg-zinc-900/80 border border-white/10 rounded-xl overflow-hidden">
+                        <summary class="flex items-center justify-between cursor-pointer p-4 text-white font-semibold text-sm uppercase hover:bg-zinc-800/50 transition-colors list-none">
+                            Meus dados ficam seguros?
+                            <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 shrink-0 transition-transform duration-200"></i>
+                        </summary>
+                        <div class="px-4 pb-4 text-zinc-400 text-sm leading-relaxed">
+                            Sim. A Cakto utiliza criptografia e não compartilha seus dados com terceiros. Sua privacidade é respeitada.
+                        </div>
+                    </details>
+
+                    <details class="group bg-zinc-900/80 border border-white/10 rounded-xl overflow-hidden">
+                        <summary class="flex items-center justify-between cursor-pointer p-4 text-white font-semibold text-sm uppercase hover:bg-zinc-800/50 transition-colors list-none">
+                            Como recebo o acesso?
+                            <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 shrink-0 transition-transform duration-200"></i>
+                        </summary>
+                        <div class="px-4 pb-4 text-zinc-400 text-sm leading-relaxed">
+                            O link é enviado no e-mail cadastrado em até 1 minuto após a confirmação do pagamento. Verifique também a pasta de spam.
+                        </div>
+                    </details>
+
+                    <details class="group bg-zinc-900/80 border border-white/10 rounded-xl overflow-hidden">
+                        <summary class="flex items-center justify-between cursor-pointer p-4 text-white font-semibold text-sm uppercase hover:bg-zinc-800/50 transition-colors list-none">
+                            Posso acessar de qualquer dispositivo?
+                            <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 shrink-0 transition-transform duration-200"></i>
+                        </summary>
+                        <div class="px-4 pb-4 text-zinc-400 text-sm leading-relaxed">
+                            Sim. O link funciona em celular, tablet ou computador. Acesso vitalício — volte quando quiser.
+                        </div>
+                    </details>
+
+                    <details class="group bg-zinc-900/80 border border-white/10 rounded-xl overflow-hidden">
+                        <summary class="flex items-center justify-between cursor-pointer p-4 text-white font-semibold text-sm uppercase hover:bg-zinc-800/50 transition-colors list-none">
+                            E se eu tiver problema com o acesso?
+                            <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 shrink-0 transition-transform duration-200"></i>
+                        </summary>
+                        <div class="px-4 pb-4 text-zinc-400 text-sm leading-relaxed">
+                            Entre em contato pelo suporte no Telegram (informado após a compra). Respondemos em até 24 horas.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="py-12 bg-black text-center border-t border-zinc-900 relative overflow-hidden">
+    <!-- 18+ Warning Banner - Barreira Etária -->
+    <div class="max-w-4xl mx-auto px-4 mb-8">
+        <div class="inline-flex items-center gap-4 bg-zinc-900/80 border border-red-900/50 p-4 rounded-lg backdrop-blur-sm shadow-lg shadow-red-900/10">
+            <div class="bg-red-600/20 p-2 rounded text-red-500 shrink-0">
+                <span class="text-xl font-black">+18</span>
+            </div>
+            <div class="text-left">
+                <p class="text-red-600 font-bold uppercase text-xs tracking-widest mb-1">Aviso Legal</p>
+                <p class="text-zinc-400 text-[11px] leading-tight max-w-lg">
+                    Este site é destinado exclusivamente a maiores de 18 anos. Ao prosseguir, você declara ter idade legal para visualizar este tipo de conteúdo e aceita os termos de uso. O acesso por menores é proibido.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Direitos Autorais e Isenção -->
+    <div class="max-w-4xl mx-auto px-4 mb-6">
+        <p class="text-zinc-500 text-[10px] leading-relaxed text-center max-w-2xl mx-auto">
+            © 2025 Pack R3D. Todos os direitos reservados. O conteúdo é protegido por lei. Cópia, distribuição ou compartilhamento não autorizado estão sujeitos a medidas judiciais.
+        </p>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="flex flex-wrap justify-center gap-6 mb-6 text-xs text-zinc-600 uppercase tracking-widest">
+            <a href="#" class="hover:text-amber-500 transition-colors">Termos de Uso</a>
+            <a href="#" class="hover:text-amber-500 transition-colors">Políticas de Privacidade</a>
+            <a href="#" class="hover:text-amber-500 transition-colors">Suporte</a>
+        </div>
+        <p class="text-[10px] text-zinc-700 text-center">
+            Este site não é afiliado ao Facebook, Instagram, Meta ou outras redes sociais. Nomes e logotipos são marcas de seus respectivos proprietários.
+        </p>
+    </div>
+</footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        function initLucide(){
+            if(window.lucide){
+                lucide.createIcons();
+            } else {
+                setTimeout(initLucide, 200);
+            }
+        }
+        initLucide();
+
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Countdown Timer Logic
+        function startTimer(duration, display) {
+            let timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = duration; // Reset or stop
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            // 48 minutes countdown (47:59)
+            const duration = 60 * 47 + 59; 
+            const display = document.querySelector('#countdown');
+            startTimer(duration, display);
+        };
+    </script>
+
+<!-- Proof Social: notificação de compra -->
+<div id="proof-social-container" class="fixed bottom-4 right-4 z-[9998] flex flex-col gap-3 pointer-events-none w-[280px] max-w-[calc(100vw-2rem)]"></div>
+
+<script>
+(function() {
+    var names = ['João', 'Pedro', 'Lucas', 'Gabriel', 'Rafael', 'Bruno', 'Felipe', 'André', 'Carlos', 'Ricardo', 'Daniel', 'Marcos', 'Thiago', 'Leonardo', 'Rodrigo', 'Gustavo', 'Fernando', 'Paulo', 'Eduardo', 'Marcelo'];
+    var times = ['agora', 'há 20 segundos', 'há 30 segundos', 'há 1 minuto', 'há 2 minutos'];
+    var container = document.getElementById('proof-social-container');
+    var currentCard = null;
+
+    function randomItem(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+    function showProof() {
+        if (currentCard) {
+            currentCard.classList.remove('proof-in');
+            currentCard.classList.add('proof-out');
+            setTimeout(function() {
+                if (currentCard && currentCard.parentNode) currentCard.parentNode.removeChild(currentCard);
+                currentCard = null;
+            }, 300);
+        }
+        var name = randomItem(names);
+        var time = randomItem(times);
+        var card = document.createElement('div');
+        card.className = 'proof-card proof-in bg-zinc-900/95 backdrop-blur border border-white/10 rounded-xl px-4 py-3 shadow-xl flex items-center gap-3 pointer-events-auto';
+        card.innerHTML = '<span class="flex-shrink-0 w-10 h-10 rounded-full bg-red-600/30 flex items-center justify-center"><i data-lucide="check" class="w-5 h-5 text-red-500"></i></span>' +
+            '<div class="min-w-0"><p class="text-white font-semibold text-sm truncate">' + name + ' comprou</p><p class="text-zinc-400 text-xs">' + time + '</p></div>';
+        container.appendChild(card);
+        if (window.lucide) lucide.createIcons();
+        currentCard = card;
+        setTimeout(function() {
+            if (card.parentNode) {
+                card.classList.remove('proof-in');
+                card.classList.add('proof-out');
+                setTimeout(function() {
+                    if (card.parentNode) card.parentNode.removeChild(card);
+                    if (currentCard === card) currentCard = null;
+                }, 300);
+            }
+        }, 4500);
+    }
+
+    setInterval(showProof, 5000);
+    setTimeout(showProof, 1500);
+})();
+</script>
+
+</body>
+</html>
